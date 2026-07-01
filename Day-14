@@ -1,0 +1,117 @@
+/*
+for linear search */
+#include <stdio.h>
+
+int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {10, 50, 30, 70, 80, 60, 20, 90, 40};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int key = 30;
+
+    int index = linearSearch(arr, n, key);
+
+    if (index == -1) {
+        printf("Element not found\n");
+    } else {
+        printf("Element found at index: %d\n", index);
+    }
+
+    return 0;
+}
+
+
+
+/*to et frequency of an element */
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, key, count = 0;
+
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter element to find frequency: ");
+    scanf("%d", &key);
+
+    for (i = 0; i < n; i++) {
+        if (arr[i] == key) {
+            count++;
+        }
+    }
+
+    printf("Frequency of %d is %d\n", key, count);
+
+    return 0;
+}
+
+
+
+/*
+to get 2nd largest element */
+#include <stdio.h>
+#include <limits.h>
+
+int main() {
+    int arr[] = {10, 5, 8, 20, 20, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int largest = INT_MIN, second = INT_MIN;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > largest) {
+            second = largest;
+            largest = arr[i];
+        } else if (arr[i] > second && arr[i] != largest) {
+            second = arr[i];
+        }
+    }
+
+    if (second == INT_MIN) {
+        printf("No second largest element\n");
+    } else {
+        printf("Second largest element = %d\n", second);
+    }
+
+    return 0;
+}
+
+
+
+/* to get duplciates in array */
+#include <stdio.h>
+
+int main() {
+    int arr[] = {1, 2, 3, 2, 4, 5, 1, 6, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int visited[100] = {0};
+
+    for (int i = 0; i < n; i++) {
+        if (visited[i]) continue;
+
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+                visited[j] = 1;
+            }
+        }
+
+        if (count > 1) {
+            printf("%d occurs %d times\n", arr[i], count);
+        }
+    }
+
+    return 0;
+}

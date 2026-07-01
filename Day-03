@@ -1,0 +1,104 @@
+//to check the numebr is prime or not
+#include <stdio.h>
+
+int main() {
+    int n, i, prime = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n <= 1)
+        prime = 0;
+    else {
+        for (i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                prime = 0;
+                break;
+            }
+        }
+    }
+
+    if (prime)
+        printf("%d is a Prime Number.\n", n);
+    else
+        printf("%d is not a Prime Number.\n", n);
+
+    return 0;
+}
+
+
+
+//to find prime numberers in range
+#include <stdio.h>
+
+int main() {
+    int start, end, i, j, prime;
+
+    printf("Enter starting and ending numbers: ");
+    scanf("%d %d", &start, &end);
+
+    printf("Prime numbers are:\n");
+
+    for (i = start; i <= end; i++) {
+        if (i <= 1)
+            continue;
+
+        prime = 1;
+
+        for (j = 2; j <= i / 2; j++) {
+            if (i % j == 0) {
+                prime = 0;
+                break;
+            }
+        }
+
+        if (prime)
+            printf("%d ", i);
+    }
+
+    return 0;
+}
+
+
+//to find gcd of two numbers
+#include <stdio.h>
+
+int main() {
+    int a, b, i, gcd;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    for (i = 1; i <= a && i <= b; i++) {
+        if (a % i == 0 && b % i == 0)
+            gcd = i;
+    }
+
+    printf("GCD = %d\n", gcd);
+
+    return 0;
+}
+
+
+
+//to find lcm of two numbers 
+#include <stdio.h>
+
+int main() {
+    int a, b, max;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    max = (a > b) ? a : b;
+
+    while (1) {
+        if (max % a == 0 && max % b == 0) {
+            printf("LCM = %d\n", max);
+            break;
+        }
+        max++;
+    }
+
+    return 0;
+}
